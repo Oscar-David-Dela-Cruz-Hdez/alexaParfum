@@ -516,45 +516,22 @@ app.get('/api/perfumes', (req, res) => {
         
         const perfumePrincipal = coincidenciaExacta || perfumesEncontrados[0];
         
-        // Construir respuesta compatible con APL
+        // Respuesta ajustada para coincidir con tu APL
         res.json({
             encontrado: true,
             total_opciones: perfumesEncontrados.length,
             
-            // Datos para APL
-            apl_datos: {
-                tipo: "RecomendacionPerfume",
-                perfume_principal: {
-                    texto: perfumePrincipal.texto,
-                    marcas: perfumePrincipal.marcas,
-                    imagen_frasco: perfumePrincipal.imagen,
-                    imagen_alternativa: perfumePrincipal.imagen_secundaria || perfumePrincipal.imagen,
-                    atributos: {
-                        estacion: perfumePrincipal.estacion,
-                        momento: perfumePrincipal.momento,
-                        ocasion: perfumePrincipal.ocasion,
-                        genero: perfumePrincipal.genero,
-                        tipo_aroma: perfumePrincipal.tipo,
-                        precio: perfumePrincipal.precio,
-                        duracion: perfumePrincipal.duracion
-                    }
-                },
-                opciones_alternativas: perfumesEncontrados
-                    .filter(item => item !== perfumePrincipal)
-                    .slice(0, 3)
-                    .map(item => ({
-                        texto: item.texto,
-                        marcas: item.marcas,
-                        imagen: item.imagen,
-                        atributos: {
-                            tipo_aroma: item.tipo,
-                            precio: item.precio,
-                            duracion: item.duracion
-                        }
-                    }))
+            // Estructura plana para APL
+            perfumeData: {
+                imagen: perfumePrincipal.imagen,
+                marca: perfumePrincipal.marcas[0],
+                descripcion: perfumePrincipal.texto,
+                duracion: perfumePrincipal.duracion,
+                precio: perfumePrincipal.precio,
+                genero: perfumePrincipal.genero
             },
             
-            // Datos simplificados para voz (Alexa sin pantalla)
+            // Estructura para voz
             voz_datos: {
                 recomendacion: perfumePrincipal.texto,
                 marcas_sugeridas: perfumePrincipal.marcas
@@ -566,10 +543,14 @@ app.get('/api/perfumes', (req, res) => {
             voz_datos: {
                 mensaje: "una fragancia versátil, preferentemente con notas amaderadas suaves o un perfil azul que se adapte a cualquier escenario sin fallar."
             },
-            apl_datos: {
-                tipo: "RecomendacionGenerica",
-                mensaje: "No encontré una coincidencia exacta, pero te recomiendo una fragancia versátil con notas amaderadas suaves.",
-                imagen_generica: "https://m.media-amazon.com/images/I/61HYd39TiyL._SL1500_.jpg"
+            // Estructura plana incluso en fallo para evitar errores de undefined
+            perfumeData: {
+                imagen: "https://m.media-amazon.com/images/I/61HYd39TiyL._SL1500_.jpg",
+                marca: "Recomendación General",
+                descripcion: "No encontré una coincidencia exacta, pero te recomiendo una fragancia versátil.",
+                duracion: "N/A",
+                precio: "Versátil",
+                genero: "Unisex"
             }
         });
     }
