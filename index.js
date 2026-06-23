@@ -3,14 +3,14 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors());
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const IMG_BASE = "https://raw.githubusercontent.com/Oscar-David-Dela-Cruz-Hdez/alexaParfum/master/images/";
 
 const catalogoPerfumes = [
 
     {
-        estacion: "verano", momento: "mañana", ocasión: "diario", genero: "masculino", tipo: "citrico",
+        estacion: "verano", momento: "mañana", ocasion: "diario", genero: "masculino", tipo: "citrico",
         precio: "medio", duracion: "4-6h",
         imagen: IMG_BASE + "versace-pour-homme.png",
         imagen_secundaria: IMG_BASE + "ck-one.jpg",
@@ -18,7 +18,7 @@ const catalogoPerfumes = [
         marcas: ["Versace Pour Homme", "CK One"]
     },
     {
-        estacion: "verano", momento: "mañana", ocasión: "diario", genero: "femenino", tipo: "floral",
+        estacion: "verano", momento: "mañana", ocasion: "diario", genero: "femenino", tipo: "floral",
         precio: "medio", duracion: "4-6h",
         imagen: IMG_BASE + "marc-jacobs-daisy-eau-so-fresh.jpg",
         imagen_secundaria: IMG_BASE + "dolce-gabbana-light-blue.jpg",
@@ -26,7 +26,7 @@ const catalogoPerfumes = [
         marcas: ["Marc Jacobs Daisy Eau So Fresh", "Dolce & Gabbana Light Blue"]
     },
     {
-        estacion: "verano", momento: "mañana", ocasión: "deporte", genero: "unisex", tipo: "citrico",
+        estacion: "verano", momento: "mañana", ocasion: "deporte", genero: "unisex", tipo: "citrico",
         precio: "economico", duracion: "3-5h",
         imagen: IMG_BASE + "adidas-ice-dive.jpg",
         imagen_secundaria: IMG_BASE + "nivea-men-fresh-active.png",
@@ -34,7 +34,7 @@ const catalogoPerfumes = [
         marcas: ["Adidas Ice Dive", "Nivea Men Fresh Active"]
     },
     {
-        estacion: "calor", momento: "mañana", ocasión: "diario", genero: "masculino", tipo: "citrico",
+        estacion: "calor", momento: "mañana", ocasion: "diario", genero: "masculino", tipo: "citrico",
         precio: "medio", duracion: "4-6h",
         imagen: IMG_BASE + "versace-pour-homme.png",
         texto: "algo ligero y energizante para empezar el día. Versace Pour Homme o CK One son opciones perfectas y muy limpias.",
@@ -43,7 +43,7 @@ const catalogoPerfumes = [
 
     // --- DÍA ---
     {
-        estacion: "verano", momento: "día", ocasión: "diario", genero: "masculino", tipo: "acuatico",
+        estacion: "verano", momento: "día", ocasion: "diario", genero: "masculino", tipo: "acuatico",
         precio: "economico", duracion: "5-7h",
         imagen: IMG_BASE + "nautica-voyage.jpg",
         imagen_secundaria: IMG_BASE + "guess-seductive-homme-blue.jpg",
@@ -51,7 +51,7 @@ const catalogoPerfumes = [
         marcas: ["Nautica Voyage", "Guess Seductive Homme Blue"]
     },
     {
-        estacion: "verano", momento: "día", ocasión: "diario", genero: "femenino", tipo: "floral",
+        estacion: "verano", momento: "día", ocasion: "diario", genero: "femenino", tipo: "floral",
         precio: "economico", duracion: "4-6h",
         imagen: IMG_BASE + "davidoff-cool-water-woman.jpg",
         imagen_secundaria: IMG_BASE + "elizabeth-arden-green-tea.jpg",
@@ -59,21 +59,21 @@ const catalogoPerfumes = [
         marcas: ["Davidoff Cool Water Woman", "Elizabeth Arden Green Tea"]
     },
     {
-        estacion: "verano", momento: "día", ocasión: "trabajo", genero: "masculino", tipo: "verde",
+        estacion: "verano", momento: "día", ocasion: "trabajo", genero: "masculino", tipo: "verde",
         precio: "medio", duracion: "5-7h",
         imagen: IMG_BASE + "alfred-sung-paradise.jpg",
         texto: "un aroma limpio y profesional. Alfred Sung Paradise es excelente para mantener una vibra verde y formal sin abrumar.",
         marcas: ["Alfred Sung Paradise"]
     },
     {
-        estacion: "verano", momento: "día", ocasión: "oficina", genero: "masculino", tipo: "citrico",
+        estacion: "verano", momento: "día", ocasion: "oficina", genero: "masculino", tipo: "citrico",
         precio: "alto", duracion: "6-8h",
         imagen: IMG_BASE + "acqua-di-gio.jpg",
         texto: "una opción cítrica e inofensiva para espacios cerrados. Acqua di Giò original nunca falla.",
         marcas: ["Acqua di Giò"]
     },
     {
-        estacion: "verano", momento: "día", ocasión: "oficina", genero: "femenino", tipo: "floral",
+        estacion: "verano", momento: "día", ocasion: "oficina", genero: "femenino", tipo: "floral",
         precio: "alto", duracion: "6-8h",
         imagen: IMG_BASE + "chanel-chance-eau-fraiche.jpg",
         imagen_secundaria: IMG_BASE + "hermes-un-jardin-sur-le-nil.jpg",
@@ -81,7 +81,7 @@ const catalogoPerfumes = [
         marcas: ["Chanel Chance Eau Fraîche", "Hermès Un Jardin sur le Nil"]
     },
     {
-        estacion: "verano", momento: "día", ocasión: "casual", genero: "unisex", tipo: "citrico",
+        estacion: "verano", momento: "día", ocasion: "casual", genero: "unisex", tipo: "citrico",
         precio: "medio", duracion: "5-7h",
         imagen: IMG_BASE + "ck-one-summer.jpg",
         imagen_secundaria: IMG_BASE + "tommy-hilfiger-tommy-now.jpg",
@@ -89,7 +89,7 @@ const catalogoPerfumes = [
         marcas: ["CK One Summer", "Tommy Hilfiger Tommy Now"]
     },
     {
-        estacion: "calor", momento: "día", ocasión: "diario", genero: "masculino", tipo: "acuatico",
+        estacion: "calor", momento: "día", ocasion: "diario", genero: "masculino", tipo: "acuatico",
         precio: "economico", duracion: "5-7h",
         imagen: IMG_BASE + "nautica-voyage.jpg",
         texto: "una fragancia súper fresca y acuática. Nautica Voyage o Guess Seductive Homme Blue son excelentes para soportar la humedad extrema.",
@@ -98,14 +98,14 @@ const catalogoPerfumes = [
 
     // --- TARDE ---
     {
-        estacion: "verano", momento: "tarde", ocasión: "cita", genero: "masculino", tipo: "aromatico",
+        estacion: "verano", momento: "tarde", ocasion: "cita", genero: "masculino", tipo: "aromatico",
         precio: "medio", duracion: "5-7h",
         imagen: IMG_BASE + "guess-1981-los-angeles.jpg",
         texto: "un aroma fresco pero con un toque dulce. Guess 1981 Los Angeles, con sus notas de tabaco y menta, proyecta increíble.",
         marcas: ["Guess 1981 Los Angeles"]
     },
     {
-        estacion: "verano", momento: "tarde", ocasión: "cita", genero: "femenino", tipo: "floral_frutal",
+        estacion: "verano", momento: "tarde", ocasion: "cita", genero: "femenino", tipo: "floral_frutal",
         precio: "medio", duracion: "5-7h",
         imagen: IMG_BASE + "escada-magnetism.jpg",
         imagen_secundaria: IMG_BASE + "yves-saint-laurent-mon-paris.png",
@@ -113,7 +113,7 @@ const catalogoPerfumes = [
         marcas: ["Escada Magnetism", "Yves Saint Laurent Mon Paris"]
     },
     {
-        estacion: "verano", momento: "tarde", ocasión: "fiesta", genero: "unisex", tipo: "aromatico",
+        estacion: "verano", momento: "tarde", ocasion: "fiesta", genero: "unisex", tipo: "aromatico",
         precio: "alto", duracion: "7-9h",
         imagen: IMG_BASE + "creed-virgin-island-water.jpg",
         texto: "algo vibrante para una pool party o reunión al atardecer. Creed Virgin Island Water con notas de coco y lima es insuperable.",
@@ -122,14 +122,14 @@ const catalogoPerfumes = [
 
     // --- NOCHE ---
     {
-        estacion: "verano", momento: "noche", ocasión: "cita", genero: "masculino", tipo: "amaderado",
+        estacion: "verano", momento: "noche", ocasion: "cita", genero: "masculino", tipo: "amaderado",
         precio: "alto", duracion: "7-9h",
         imagen: IMG_BASE + "yves-saint-laurent-y-eau-de-parfum.jpg",
         texto: "algo seductor pero que no asfixie con el calor. Yves Saint Laurent Y Eau de Parfum tiene el equilibrio exacto.",
         marcas: ["Yves Saint Laurent Y Eau de Parfum"]
     },
     {
-        estacion: "verano", momento: "noche", ocasión: "cita", genero: "femenino", tipo: "oriental",
+        estacion: "verano", momento: "noche", ocasion: "cita", genero: "femenino", tipo: "oriental",
         precio: "alto", duracion: "7-9h",
         imagen: IMG_BASE + "gucci-bloom.jpg",
         imagen_secundaria: IMG_BASE + "lancome-la-vie-est-belle.jpg",
@@ -137,14 +137,14 @@ const catalogoPerfumes = [
         marcas: ["Gucci Bloom", "Lancôme La Vie Est Belle"]
     },
     {
-        estacion: "verano", momento: "noche", ocasión: "elegante", genero: "masculino", tipo: "amaderado_marino",
+        estacion: "verano", momento: "noche", ocasion: "elegante", genero: "masculino", tipo: "amaderado_marino",
         precio: "alto", duracion: "8-10h",
         imagen: IMG_BASE + "acqua-di-gio-profumo.jpg",
         texto: "un perfil sofisticado que corte bien a través del calor. Acqua di Giò Profumo, con incienso y notas marinas, es un acierto total.",
         marcas: ["Acqua di Giò Profumo"]
     },
     {
-        estacion: "verano", momento: "noche", ocasión: "elegante", genero: "femenino", tipo: "floral_amaderado",
+        estacion: "verano", momento: "noche", ocasion: "elegante", genero: "femenino", tipo: "floral_amaderado",
         precio: "premium", duracion: "8-10h",
         imagen: IMG_BASE + "tom-ford-neroli-portofino.png",
         texto: "una fragancia de lujo para noches especiales. Tom Ford Neroli Portofino o Maison Francis Kurkdjian Aqua Universalis son joyas olfativas.",
@@ -154,14 +154,14 @@ const catalogoPerfumes = [
     // ==================== INVIERNO / FRÍO ====================
     // --- MAÑANA ---
     {
-        estacion: "invierno", momento: "mañana", ocasión: "diario", genero: "masculino", tipo: "especiado",
+        estacion: "invierno", momento: "mañana", ocasion: "diario", genero: "masculino", tipo: "especiado",
         precio: "medio", duracion: "6-8h",
         imagen: IMG_BASE + "burberry-london.png",
         texto: "un aroma reconfortante. Burberry London tiene notas de pino y canela que huelen exactamente a una mañana fría.",
         marcas: ["Burberry London"]
     },
     {
-        estacion: "invierno", momento: "mañana", ocasión: "diario", genero: "femenino", tipo: "gourmand",
+        estacion: "invierno", momento: "mañana", ocasion: "diario", genero: "femenino", tipo: "gourmand",
         precio: "medio", duracion: "5-7h",
         imagen: IMG_BASE + "prada-candy.jpg",
         imagen_secundaria: IMG_BASE + "lancome-tresor-midnight-rose.jpg",
@@ -171,21 +171,21 @@ const catalogoPerfumes = [
 
     // --- DÍA ---
     {
-        estacion: "invierno", momento: "día", ocasión: "diario", genero: "masculino", tipo: "oriental",
+        estacion: "invierno", momento: "día", ocasion: "diario", genero: "masculino", tipo: "oriental",
         precio: "medio", duracion: "7-9h",
         imagen: IMG_BASE + "odyssey-perfume.jpg",
         texto: "algo cálido y llevadero. Las opciones de la línea Odyssey son estupendas porque su dulzor y notas especiadas abrazan muy bien.",
         marcas: ["Odyssey"]
     },
     {
-        estacion: "invierno", momento: "día", ocasión: "trabajo", genero: "masculino", tipo: "amaderado",
+        estacion: "invierno", momento: "día", ocasion: "trabajo", genero: "masculino", tipo: "amaderado",
         precio: "alto", duracion: "8-10h",
         imagen: IMG_BASE + "tom-ford-oud-wood.png",
         texto: "un amaderado muy elegante. Tom Ford Oud Wood proyecta mucha seriedad y calidez.",
         marcas: ["Tom Ford Oud Wood"]
     },
     {
-        estacion: "invierno", momento: "día", ocasión: "trabajo", genero: "femenino", tipo: "cuero",
+        estacion: "invierno", momento: "día", ocasion: "trabajo", genero: "femenino", tipo: "cuero",
         precio: "alto", duracion: "8-10h",
         imagen: IMG_BASE + "chanel-coco-mademoiselle.jpg",
         imagen_secundaria: IMG_BASE + "bottega-veneta-eau-de-parfum.jpg",
@@ -195,14 +195,14 @@ const catalogoPerfumes = [
 
     // --- TARDE ---
     {
-        estacion: "invierno", momento: "tarde", ocasión: "cita", genero: "masculino", tipo: "oriental_especiado",
+        estacion: "invierno", momento: "tarde", ocasion: "cita", genero: "masculino", tipo: "oriental_especiado",
         precio: "medio", duracion: "6-8h",
         imagen: IMG_BASE + "dolce-gabbana-the-one.jpg",
         texto: "notas de ámbar, cardamomo y tabaco. Dolce & Gabbana The One es el rey indiscutible para distancias cortas en el frío.",
         marcas: ["Dolce & Gabbana The One"]
     },
     {
-        estacion: "invierno", momento: "tarde", ocasión: "cita", genero: "femenino", tipo: "gourmand",
+        estacion: "invierno", momento: "tarde", ocasion: "cita", genero: "femenino", tipo: "gourmand",
         precio: "medio", duracion: "6-8h",
         imagen: IMG_BASE + "viktor-rolf-flowerbomb.jpg",
         imagen_secundaria: IMG_BASE + "paco-rabanne-lady-million.jpg",
@@ -212,14 +212,14 @@ const catalogoPerfumes = [
 
     // --- NOCHE ---
     {
-        estacion: "invierno", momento: "noche", ocasión: "cita", genero: "masculino", tipo: "gourmand",
+        estacion: "invierno", momento: "noche", ocasion: "cita", genero: "masculino", tipo: "gourmand",
         precio: "alto", duracion: "9-11h",
         imagen: IMG_BASE + "azzaro-the-most-wanted.jpg",
         texto: "algo extremadamente seductor y dulce. Azzaro The Most Wanted dejará una estela irresistible.",
         marcas: ["Azzaro The Most Wanted"]
     },
     {
-        estacion: "invierno", momento: "noche", ocasión: "cita", genero: "femenino", tipo: "oriental",
+        estacion: "invierno", momento: "noche", ocasion: "cita", genero: "femenino", tipo: "oriental",
         precio: "premium", duracion: "10-12h",
         imagen: IMG_BASE + "tom-ford-black-orchid.jpg",
         imagen_secundaria: IMG_BASE + "kilian-love-dont-be-shy.jpg",
@@ -227,14 +227,14 @@ const catalogoPerfumes = [
         marcas: ["Tom Ford Black Orchid", "Kilian Love Don't Be Shy"]
     },
     {
-        estacion: "invierno", momento: "noche", ocasión: "elegante", genero: "masculino", tipo: "amaderado_oscuro",
+        estacion: "invierno", momento: "noche", ocasion: "elegante", genero: "masculino", tipo: "amaderado_oscuro",
         precio: "alto", duracion: "10-12h",
         imagen: IMG_BASE + "armaf-club-de-nuit-intense-man.png",
         texto: "fragancias con mucha potencia y maderas oscuras. Armaf Club de Nuit Intense Man proyecta muchísimo, es elegante y deja una gran estela.",
         marcas: ["Armaf Club de Nuit Intense Man"]
     },
     {
-        estacion: "invierno", momento: "noche", ocasión: "elegante", genero: "femenino", tipo: "amaderado_oriental",
+        estacion: "invierno", momento: "noche", ocasion: "elegante", genero: "femenino", tipo: "amaderado_oriental",
         precio: "premium", duracion: "10-12h",
         imagen: IMG_BASE + "guerlain-shalimar.jpg",
         imagen_secundaria: IMG_BASE + "maison-francis-kurkdjian-baccarat-rouge-540.jpg",
@@ -244,42 +244,42 @@ const catalogoPerfumes = [
 
     // ==================== PRIMAVERA ====================
     {
-        estacion: "primavera", momento: "mañana", ocasión: "diario", genero: "masculino", tipo: "verde",
+        estacion: "primavera", momento: "mañana", ocasion: "diario", genero: "masculino", tipo: "verde",
         precio: "medio", duracion: "5-7h",
         imagen: IMG_BASE + "lacoste-blanc.jpg",
         texto: "fragancias muy verdes y alegres. Lacoste Blanc te dará una sensación de frescura inigualable.",
         marcas: ["Lacoste Blanc"]
     },
     {
-        estacion: "primavera", momento: "día", ocasión: "diario", genero: "masculino", tipo: "aromatico",
+        estacion: "primavera", momento: "día", ocasion: "diario", genero: "masculino", tipo: "aromatico",
         precio: "economico", duracion: "5-7h",
         imagen: IMG_BASE + "perry-ellis-360-red.jpg",
         texto: "notas de lavanda y cítricos. Perry Ellis 360 Red funciona de maravilla para el clima templado.",
         marcas: ["Perry Ellis 360 Red"]
     },
     {
-        estacion: "primavera", momento: "día", ocasión: "trabajo", genero: "masculino", tipo: "atalcado",
+        estacion: "primavera", momento: "día", ocasion: "trabajo", genero: "masculino", tipo: "atalcado",
         precio: "alto", duracion: "7-9h",
         imagen: IMG_BASE + "prada-lhomme.jpg",
         texto: "algo pulcro, atalcado y profesional. Prada L'Homme huele a limpio, a jabón caro y a éxito.",
         marcas: ["Prada L'Homme"]
     },
     {
-        estacion: "primavera", momento: "tarde", ocasión: "cita", genero: "masculino", tipo: "amaderado_aromatico",
+        estacion: "primavera", momento: "tarde", ocasion: "cita", genero: "masculino", tipo: "amaderado_aromatico",
         precio: "medio", duracion: "6-8h",
         imagen: IMG_BASE + "montblanc-explorer.jpg",
         texto: "aromas frutales o florales limpios. Montblanc Explorer te hará destacar de forma muy sutil y masculina.",
         marcas: ["Montblanc Explorer"]
     },
     {
-        estacion: "primavera", momento: "noche", ocasión: "elegante", genero: "masculino", tipo: "azul",
+        estacion: "primavera", momento: "noche", ocasion: "elegante", genero: "masculino", tipo: "azul",
         precio: "alto", duracion: "8-10h",
         imagen: IMG_BASE + "bleu-de-chanel.jpg",
         texto: "algo azul y versátil. Bleu de Chanel Eau de Parfum es la navaja suiza de la elegancia.",
         marcas: ["Bleu de Chanel"]
     },
     {
-        estacion: "primavera", momento: "noche", ocasión: "cita", genero: "masculino", tipo: "oriental",
+        estacion: "primavera", momento: "noche", ocasion: "cita", genero: "masculino", tipo: "oriental",
         precio: "alto", duracion: "7-9h",
         imagen: IMG_BASE + "dior-sauvage.jpg",
         imagen_secundaria: IMG_BASE + "jean-paul-gaultier-le-male-le-parfum.jpg",
@@ -289,14 +289,14 @@ const catalogoPerfumes = [
 
     // ==================== OTOÑO ====================
     {
-        estacion: "otoño", momento: "mañana", ocasión: "diario", genero: "masculino", tipo: "especiado",
+        estacion: "otoño", momento: "mañana", ocasion: "diario", genero: "masculino", tipo: "especiado",
         precio: "medio", duracion: "6-8h",
         imagen: IMG_BASE + "boss-bottled.jpg",
         texto: "notas de manzana y canela. Boss Bottled clásico te hará sentir muy cómodo.",
         marcas: ["Boss Bottled"]
     },
     {
-        estacion: "otoño", momento: "día", ocasión: "trabajo", genero: "masculino", tipo: "amaderado_verde",
+        estacion: "otoño", momento: "día", ocasion: "trabajo", genero: "masculino", tipo: "amaderado_verde",
         precio: "alto", duracion: "8-10h",
         imagen: IMG_BASE + "terre-dhermes.jpg",
         texto: "un perfil serio de maderas y vetiver. Terre d'Hermès es la definición de elegancia profesional para las tardes frescas.",
@@ -489,7 +489,7 @@ app.get('/api/imagenes', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ API de perfumes corriendo en http://localhost:${PORT}`);
     console.log(`📊 Base de datos: ${catalogoPerfumes.length} fragancias registradas`);
     console.log(`🌍 Endpoints disponibles:`);
@@ -497,4 +497,5 @@ app.listen(PORT, () => {
     console.log(`   - GET /api/apl/perfume (datos optimizados para APL)`);
     console.log(`   - GET /api/estadisticas (estadísticas del catálogo)`);
     console.log(`   - GET /api/imagenes (listado de imágenes disponibles)`);
+    
 });
